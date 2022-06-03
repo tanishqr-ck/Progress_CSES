@@ -17,8 +17,10 @@ int main()
     cin>>n;
     vector<int> a;
     for(int i=1;i<=n;i++)
-    a.pb(i);int k=2;
-    int index=k-1;;
+    a.pb(i);int k;
+    cin>>k;
+    k++;
+    int index=k-1;
     while(a.size()>1)
     {
        vector<int> b;int t=0;
