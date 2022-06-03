@@ -8,35 +8,29 @@
 #define ar array
 using namespace std;
 using namespace __gnu_pbds;
+typedef long long ll;
 typedef tree<int,null_type,less<int>,rb_tree_tag,
 tree_order_statistics_node_update> indexed_set;
-typedef long long ll;
+const int mxn=2e5;
 int main()
 {
-    int n;
-    cin>>n;
-    vector<int> a;
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    int n,k;
+    cin>>n>>k;
+    indexed_set ans;
     for(int i=1;i<=n;i++)
-    a.pb(i);int k;
-    cin>>k;
-    k++;
-    int index=k-1;
-    while(a.size()>1)
-    {
-       vector<int> b;int t=0;
-       for(int i=0;i<a.size();i++)
-       {
-           if(i!=index)
-           b.pb(a[i]);
-           else{
-           cout<<a[i]<<" ";
-      index=(index+k)%a.size();
-       }
+    ans.insert(i);
+    int index=k%n;
+  while(n--)
+  {
+    auto g=ans.find_by_order(index);
+      cout<<*g<<" ";
+      ans.erase(g);
+      if(n)
+       index=(index+k)%n;
       
     }
-    a.clear();
-    copy(b.begin(), b.end(), back_inserter(a));
-}
-for(auto x: a)
-cout<<x<<" ";
-}
+    
+  }
+ 
